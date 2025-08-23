@@ -1,0 +1,1109 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>htmlmenu Menu</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+	
+	
+	
+    <style>
+      /* HTML MENU HEADER */
+
+      .htmlmenu-header {
+        position: relative;
+        font-size: 18px;
+        background: #0f1115;
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+        box-sizing: border-box;
+      }
+
+      .htmlmenu-header *,
+      .htmlmenu-header *:before,
+      .htmlmenu-header *:after {
+        box-sizing: border-box;
+      }
+
+      /* HTML MENU CONTAINER */
+
+      .htmlmenu-container {
+        position: relative;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 1280px;
+      }
+
+      /* HTML MENU HEADER SHADOW */
+
+      .htmlmenu-header-shadow {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 30px;
+        overflow: hidden;
+        z-index: 1;
+      }
+
+      .htmlmenu-header-shadow:before {
+        display: block;
+        position: relative;
+        content: "";
+        width: 100%;
+        height: 60px;
+        top: -60px;
+        border-radius: 50%;
+        box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.08);
+      }
+
+      /* HTML MENU LOGO */
+
+      .htmlmenu-logo {
+        padding: 0 0 0 30px;
+        text-align: left;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-align-items: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        height: 70px;
+      }
+
+      .htmlmenu-logo a {
+        -webkit-text-decoration: none;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: bold;
+		font-size: 22px;
+        font-family: sans-serif;
+        color: #A6A9AA;
+		  opacity: 0;
+  transform: translateX(-20px); /* start slightly left */
+  animation: slideFade 2s ease-out forwards;
+      }
+
+
+@keyframes slideFade {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+
+      /* HTML MENU TOGGLE */
+
+      .htmlmenu-toggle {
+        position: absolute;
+        width: 0;
+        height: 0;
+        margin: 0;
+        opacity: 0;
+        pointer-events: none;
+        visibility: hidden;
+      }
+
+      .htmlmenu-toggle+label {
+        position: absolute;
+        top: 26.25px;
+        right: 30px;
+        width: 20px;
+        height: 16px;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-pack: justify;
+        -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        cursor: pointer;
+        -webkit-transition: -webkit-transform 200ms ease-out;
+        -webkit-transition: transform 200ms ease-out;
+        transition: transform 200ms ease-out;
+      }
+
+      .htmlmenu-toggle+label>span {
+        display: block;
+        background-color: #A6A9AA;
+        border-radius: 2px;
+        width: 100%;
+        height: 2px;
+        -webkit-transition: all 200ms;
+        transition: all 200ms;
+      }
+
+      .htmlmenu-toggle+label>span:last-child {
+        -webkit-transform-origin: left;
+        -ms-transform-origin: left;
+        transform-origin: left;
+      }
+
+      .htmlmenu-toggle:checked+label {
+        -webkit-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+      }
+
+      .htmlmenu-toggle:checked+label>span:first-child {
+        width: 50%;
+        -webkit-transform: rotate(-90deg) translateX(3px);
+        -ms-transform: rotate(-90deg) translateX(3px);
+        transform: rotate(-90deg) translateX(3px);
+        -webkit-transform-origin: right;
+        -ms-transform-origin: right;
+        transform-origin: right;
+      }
+
+      .htmlmenu-toggle:checked+label>span:last-child {
+        width: 50%;
+        -webkit-transform: rotate(-90deg) translateX(-3px) translateY(10px);
+        -ms-transform: rotate(-90deg) translateX(-3px) translateY(10px);
+        transform: rotate(-90deg) translateX(-3px) translateY(10px);
+      }
+
+      .htmlmenu-toggle:checked~.htmlmenu-menu {
+        padding-bottom: 20px;
+      }
+
+      .htmlmenu-toggle:checked~.htmlmenu-menu>ul {
+        display: block;
+      }
+
+      .htmlmenu-toggle:checked~.htmlmenu-menu>ul>li>input:checked~a {
+        color: #F2980F;
+      }
+
+      .htmlmenu-toggle:checked~.htmlmenu-menu input:checked~ul {
+        display: block;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      /* HTML MENU MENU */
+
+      .htmlmenu-menu {
+        line-height: 1.5;
+      }
+
+      .htmlmenu-menu ul {
+        margin: 0;
+        padding: 0;
+        display: none;
+        list-style: none;
+      }
+
+      .htmlmenu-menu li {
+        position: relative;
+        list-style: none;
+      }
+
+      .htmlmenu-menu li>a {
+        display: block;
+        font-family: sans-serif;
+        color: #A6A9AA;
+        padding: 15px 30px;
+        -webkit-text-decoration: none;
+        text-decoration: none;
+        position: relative;
+        -webkit-transition: all 0.2s ease-in-out;
+        transition: all 0.2s ease-in-out;
+      }
+
+      .htmlmenu-menu input[type=checkbox] {
+        position: absolute;
+        width: 0;
+        height: 0;
+        margin: 0;
+        opacity: 0;
+        pointer-events: none;
+        visibility: hidden;
+      }
+
+      .htmlmenu-menu input[type=checkbox]:checked~a>label {
+        -webkit-transform: rotate(-90deg);
+        -ms-transform: rotate(-90deg);
+        transform: rotate(-90deg);
+      }
+
+      .htmlmenu-menu input[type=checkbox]:checked~a>label:before {
+        opacity: 0;
+      }
+
+      .htmlmenu-menu label {
+        display: block;
+        position: absolute;
+        cursor: pointer;
+        right: 25px;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        height: 32px;
+        width: 32px;
+        line-height: 1.5;
+        text-align: center;
+        z-index: 1;
+        -webkit-transition: -webkit-transform .4s;
+        -webkit-transition: transform .4s;
+        transition: transform .4s;
+      }
+
+      .htmlmenu-menu label:before,
+      .htmlmenu-menu label:after {
+        position: absolute;
+        content: "";
+        width: 45%;
+        height: 1px;
+        background-color: #A6A9AA;
+        display: block;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        -webkit-transition: -webkit-transform .4s, opacity .4s;
+        -webkit-transition: transform .4s, opacity .4s;
+        transition: transform .4s, opacity .4s;
+        opacity: 1;
+      }
+
+      .htmlmenu-menu label:after {
+        -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        transform: rotate(90deg);
+      }
+
+      .htmlmenu-menu>ul>li>a {
+        font-size: 15px;
+        font-style: normal;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+
+      .htmlmenu-menu>ul>li:hover>a,
+      .htmlmenu-menu>ul>li.htmlmenu-menu-current>a {
+        color: #F2980F;
+      }
+
+      .htmlmenu-menu ul ul li>a {
+        font-size: 14px;
+        font-style: normal;
+        font-weight: normal;
+        text-transform: none;
+        padding: 12px 30px;
+      }
+	  
+	 
+	  
+	  
+
+      @media (min-width:1024px) {
+        /* HTML MENU HEADER */
+        .htmlmenu-header {
+          -webkit-transition: all .2s ease-in-out;
+          transition: all .2s ease-in-out;
+          position: fixed;
+          left: 0;
+          right: 0;
+          width: 100%;
+          height: 70px;
+          top: 0;
+          z-index: 99999;
+        }
+        .htmlmenu-header.htmlmenu-header-transparent-dark {
+          background: transparent;
+          position: fixed;
+          left: 0;
+          right: 0;
+          height: 70px;
+          top: 0;
+        }
+        .htmlmenu-header.htmlmenu-header-transparent-dark .htmlmenu-logo a {
+          color: #F0F0F0;
+        }
+        .htmlmenu-header.htmlmenu-header-transparent-dark .htmlmenu-menu>ul>li>a,
+        .htmlmenu-header.htmlmenu-header-transparent-dark .htmlmenu-toggle:checked~.htmlmenu-menu>ul>li>input:checked~a {
+          color: #F0F0F0;
+        }
+        .htmlmenu-header.htmlmenu-header-transparent-dark .htmlmenu-menu>ul>li>a>label {
+          border-color: #F0F0F0;
+        }
+        .htmlmenu-header.htmlmenu-header-transparent-dark .htmlmenu-menu>ul>li:hover>a,
+        .htmlmenu-header.htmlmenu-header-transparent-dark .htmlmenu-toggle:checked~.htmlmenu-menu>ul>li:hover>input:checked~a,
+        .htmlmenu-header.htmlmenu-header-transparent-dark .htmlmenu-menu>ul>li.htmlmenu-menu-current>a,
+        .htmlmenu-header.htmlmenu-header-transparent-dark .htmlmenu-toggle:checked~.htmlmenu-menu>ul>li.htmlmenu-menu-current>input:checked~a {
+          color: #F2980F;
+        }
+        .htmlmenu-header.htmlmenu-header-transparent-dark .htmlmenu-menu.htmlmenu-menu-style-2>ul>li:hover>a>label,
+        .htmlmenu-header.htmlmenu-header-transparent-dark .htmlmenu-menu.htmlmenu-menu-style-2>ul>li.htmlmenu-menu-current>a>label {
+          border-color: #A6A9AA;
+        }
+        .htmlmenu-header.htmlmenu-header-transparent-dark+.htmlmenu-header-spacer {
+          height: 0;
+        }
+        .htmlmenu-header.htmlmenu-header-transparent-dark>.htmlmenu-header-shadow {
+          opacity: 0;
+        }
+        .htmlmenu-header.htmlmenu-header-transparent-dark.htmlmenu-header-scrolled {
+          background: rgba(58, 61, 63, 1);
+        }
+        .htmlmenu-header.htmlmenu-header-transparent-dark.htmlmenu-header-scrolled .htmlmenu-logo a {
+          color: #A6A9AA;
+        }
+        .htmlmenu-header.htmlmenu-header-transparent-dark.htmlmenu-header-scrolled .htmlmenu-menu>ul>li>a,
+        .htmlmenu-header.htmlmenu-header-transparent-dark.htmlmenu-header-scrolled .htmlmenu-toggle:checked~.htmlmenu-menu>ul>li>input:checked~a {
+          color: #A6A9AA;
+        }
+        .htmlmenu-header.htmlmenu-header-transparent-dark.htmlmenu-header-scrolled .htmlmenu-menu>ul>li>a>label {
+          border-color: #A6A9AA;
+        }
+        .htmlmenu-header.htmlmenu-header-transparent-dark.htmlmenu-header-scrolled .htmlmenu-menu>ul>li:hover>a,
+        .htmlmenu-header.htmlmenu-header-transparent-dark.htmlmenu-header-scrolled .htmlmenu-toggle:checked~.htmlmenu-menu>ul>li:hover>input:checked~a,
+        .htmlmenu-header.htmlmenu-header-transparent-dark.htmlmenu-header-scrolled .htmlmenu-menu>ul>li.htmlmenu-menu-current>a,
+        .htmlmenu-header.htmlmenu-header-transparent-dark.htmlmenu-header-scrolled .htmlmenu-toggle:checked~.htmlmenu-menu>ul>li.htmlmenu-menu-current>input:checked~a {
+          color: #F2980F;
+        }
+        .htmlmenu-header.htmlmenu-header-transparent-dark.htmlmenu-header-scrolled .htmlmenu-menu.htmlmenu-menu-style-3>ul>li:hover>a>label,
+        .htmlmenu-header.htmlmenu-header-transparent-dark.htmlmenu-header-scrolled .htmlmenu-menu.htmlmenu-menu-style-3>ul>li.htmlmenu-menu-current>a>label {
+          border-color: #3A3D3F;
+        }
+        .htmlmenu-header.htmlmenu-header-transparent-dark.htmlmenu-header-scrolled>.htmlmenu-header-shadow {
+          opacity: 1;
+        }
+        .htmlmenu-header.htmlmenu-header-transparent-light {
+          background: transparent;
+          position: fixed;
+          left: 0;
+          right: 0;
+          height: 70px;
+          top: 0;
+        }
+        .htmlmenu-header.htmlmenu-header-transparent-light .htmlmenu-logo a {
+          color: #3A3A3A;
+        }
+        .htmlmenu-header.htmlmenu-header-transparent-light .htmlmenu-menu>ul>li>a,
+        .htmlmenu-header.htmlmenu-header-transparent-light .htmlmenu-toggle:checked~.htmlmenu-menu>ul>li>input:checked~a {
+          color: #3A3A3A;
+        }
+        .htmlmenu-header.htmlmenu-header-transparent-light .htmlmenu-menu>ul>li:hover>a,
+        .htmlmenu-header.htmlmenu-header-transparent-light .htmlmenu-toggle:checked~.htmlmenu-menu>ul>li:hover>input:checked~a,
+        .htmlmenu-header.htmlmenu-header-transparent-light .htmlmenu-menu>ul>li.htmlmenu-menu-current>a,
+        .htmlmenu-header.htmlmenu-header-transparent-light .htmlmenu-toggle:checked~.htmlmenu-menu>ul>li.htmlmenu-menu-current>input:checked~a {
+          color: #F2980F;
+        }
+        .htmlmenu-header.htmlmenu-header-transparent-light .htmlmenu-menu>ul>li>a>label {
+          border-color: #3A3A3A;
+        }
+        .htmlmenu-header.htmlmenu-header-transparent-light .htmlmenu-menu.htmlmenu-menu-style-2>ul>li:hover>a>label,
+        .htmlmenu-header.htmlmenu-header-transparent-light .htmlmenu-menu.htmlmenu-menu-style-2>ul>li.htmlmenu-menu-current>a>label {
+          border-color: #A6A9AA;
+        }
+        .htmlmenu-header.htmlmenu-header-transparent-light+.htmlmenu-header-spacer {
+          height: 0;
+        }
+        .htmlmenu-header.htmlmenu-header-transparent-light>.htmlmenu-header-shadow {
+          opacity: 0;
+        }
+        .htmlmenu-header.htmlmenu-header-transparent-light.htmlmenu-header-scrolled {
+          background: rgba(58, 61, 63, 1);
+        }
+        .htmlmenu-header.htmlmenu-header-transparent-light.htmlmenu-header-scrolled .htmlmenu-logo a {
+          color: #A6A9AA;
+        }
+        .htmlmenu-header.htmlmenu-header-transparent-light.htmlmenu-header-scrolled .htmlmenu-menu>ul>li>a,
+        .htmlmenu-header.htmlmenu-header-transparent-light.htmlmenu-header-scrolled .htmlmenu-toggle:checked~.htmlmenu-menu>ul>li>input:checked~a {
+          color: #A6A9AA;
+        }
+        .htmlmenu-header.htmlmenu-header-transparent-light.htmlmenu-header-scrolled .htmlmenu-menu>ul>li:hover>a,
+        .htmlmenu-header.htmlmenu-header-transparent-light.htmlmenu-header-scrolled .htmlmenu-toggle:checked~.htmlmenu-menu>ul>li:hover>input:checked~a,
+        .htmlmenu-header.htmlmenu-header-transparent-light.htmlmenu-header-scrolled .htmlmenu-menu>ul>li.htmlmenu-menu-current>a,
+        .htmlmenu-header.htmlmenu-header-transparent-light.htmlmenu-header-scrolled .htmlmenu-toggle:checked~.htmlmenu-menu>ul>li.htmlmenu-menu-current>input:checked~a {
+          color: #F2980F;
+        }
+        .htmlmenu-header.htmlmenu-header-transparent-light.htmlmenu-header-scrolled .htmlmenu-menu>ul>li>a>label {
+          border-color: #A6A9AA;
+        }
+        .htmlmenu-header.htmlmenu-header-transparent-light.htmlmenu-header-scrolled .htmlmenu-menu.htmlmenu-menu-style-3>ul>li:hover>a>label,
+        .htmlmenu-header.htmlmenu-header-transparent-light.htmlmenu-header-scrolled .htmlmenu-menu.htmlmenu-menu-style-3>ul>li.htmlmenu-menu-current>a>label {
+          border-color: #3A3D3F;
+        }
+        .htmlmenu-header.htmlmenu-header-transparent-light.htmlmenu-header-scrolled>.htmlmenu-header-shadow {
+          opacity: 1;
+        }
+        /* HTML MENU CONTAINER */
+        .htmlmenu-container {
+          height: 70px;
+          padding: 0 30px;
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-pack: justify;
+          -webkit-justify-content: space-between;
+          -ms-flex-pack: justify;
+          justify-content: space-between;
+        }
+        /* HTML MENU HEADER SHADOW */
+        .htmlmenu-header-shadow {
+          z-index: -1;
+        }
+        /* HTML MENU LOGO */
+        .htmlmenu-logo {
+          position: relative;
+          padding: 0;
+          top: 50%;
+          -webkit-transform: translateY(-50%);
+          -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+          line-height: 70px;
+        }
+        .htmlmenu-logo a {
+          line-height: unset;
+        }
+        .htmlmenu-logo a img {
+          display: block;
+        }
+        .htmlmenu-header-spacer {
+          height: 70px;
+        }
+        .htmlmenu-toggle:checked~.htmlmenu-menu {
+          padding-bottom: 0;
+        }
+        .htmlmenu-toggle:checked~.htmlmenu-menu input:checked~ul {
+          background: rgba(58, 61, 63, 1);
+        }
+        .htmlmenu-toggle:checked~.htmlmenu-menu>ul {
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -ms-flexbox;
+          display: flex;
+        }
+        .htmlmenu-toggle:checked~.htmlmenu-menu>ul>li>input:checked~a {
+          color: #A6A9AA;
+          background-color: transparent;
+        }
+        .htmlmenu-toggle:checked~.htmlmenu-menu>ul>li:hover>input:checked~a,
+        .htmlmenu-toggle:checked~.htmlmenu-menu>ul>li.htmlmenu-menu-current>input:checked~a {
+          color: #F2980F;
+        }
+        .htmlmenu-toggle+label {
+          opacity: 0;
+          pointer-events: none;
+        }
+        /* HTML MENU MENU */
+        .htmlmenu-menu {
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -ms-flexbox;
+          display: flex;
+          ;
+        }
+        .htmlmenu-menu ul {
+          display: block;
+          font-size: 0;
+        }
+        .htmlmenu-menu li:hover>a {
+          opacity: 1;
+          color: #F2980F;
+        }
+        .htmlmenu-menu label {
+          bottom: 3px;
+          right: 5px;
+          height: 6px;
+          width: 6px;
+          border-style: solid;
+          border-color: #A6A9AA;
+          border-width: 0px 1px 1px 0px;
+          -webkit-transform: rotate(-45deg) !important;
+          -ms-transform: rotate(-45deg) !important;
+          transform: rotate(-45deg) !important;
+        }
+        .htmlmenu-menu label:before,
+        .htmlmenu-menu label:after {
+          content: none;
+        }
+        .htmlmenu-menu>ul {
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -ms-flexbox;
+          display: flex;
+          ;
+        }
+        .htmlmenu-menu>ul>li {
+          display: inline-block;
+          ;
+        }
+        .htmlmenu-menu>ul>li>a {
+          position: relative;
+          height: 70px;
+          line-height: 70px;
+          white-space: nowrap;
+          padding: 0 20px;
+        }
+        .htmlmenu-menu>ul>li:last-child>a {
+          padding: 0 0 0 20px;
+        }
+        .htmlmenu-menu>ul>li>a>label {
+          position: relative;
+          display: inline-block;
+          margin-left: 15px;
+          right: inherit;
+          bottom: inherit;
+          vertical-align: middle;
+          top: -2px;
+          -webkit-transform: rotate(45deg) !important;
+          -ms-transform: rotate(45deg) !important;
+          transform: rotate(45deg) !important;
+          border-color: #A6A9AA;
+        }
+        .htmlmenu-menu li>ul {
+          border-top-width: 3px;
+          border-top-style: solid;
+          border-top-color: #F2980F;
+          display: block;
+          position: absolute;
+          width: 230px;
+          background: rgba(58, 61, 63, 1);
+          padding: 12px 0;
+          box-shadow: 0px 12px 30px -2px rgba(0, 0, 0, 0.1);
+          -webkit-transition: all 0.2s ease-in-out;
+          transition: all 0.2s ease-in-out;
+          z-index: 1;
+          will-change: transform, opacity;
+          pointer-events: none;
+          visibility: hidden;
+          opacity: 0;
+          top: 100%;
+          left: 0;
+        }
+        .htmlmenu-menu li:hover>ul {
+          opacity: 1;
+          pointer-events: auto;
+          visibility: visible;
+        }
+        .htmlmenu-menu li>ul ul {
+          left: 100%;
+          top: -15px;
+        }
+        .htmlmenu-menu li>ul label {
+          position: absolute;
+          right: 20px;
+        }
+        .htmlmenu-menu li.htmlmenu-submenu-right>ul {
+          left: inherit;
+          right: 0;
+        }
+        .htmlmenu-menu li.htmlmenu-submenu-right>ul ul {
+          left: -100%;
+          right: 0;
+        }
+        .htmlmenu-menu ul ul li>a {
+          padding: 10px 20px;
+          font-size: 14px;
+          color: #A6A9AA;
+        }
+        .htmlmenu-menu.htmlmenu-submenu-bordered ul ul li:after {
+          position: absolute;
+          content: "";
+          bottom: 0;
+          left: 20px;
+          right: 20px;
+          height: 1px;
+          background: #434648;
+        }
+        .htmlmenu-menu.htmlmenu-submenu-bordered ul ul li:last-child:after {
+          display: none;
+        }
+        .htmlmenu-menu.htmlmenu-menu-style-1>ul>li>a:before {
+          position: absolute;
+          content: "";
+          top: 50%;
+          right: 0;
+          width: 1px;
+          height: 20px;
+          background: rgba(166, 169, 170, 0.15);
+          -webkit-transform: translateY(-50%);
+          -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+        }
+        .htmlmenu-menu.htmlmenu-menu-style-1>ul>li:last-child>a:before {
+          display: none;
+        }
+        .htmlmenu-menu.htmlmenu-menu-style-1>ul>li:hover>a,
+        .htmlmenu-menu.htmlmenu-menu-style-1>ul>li.htmlmenu-menu-current>a {
+          color: #F2980F !important;
+          background-color: transparent !important;
+        }
+        .htmlmenu-menu.htmlmenu-menu-style-2>ul>li>a:after {
+          position: absolute;
+          content: '';
+          left: 0;
+          bottom: -3px;
+          width: 100%;
+          height: 3px;
+          background: #F2980F;
+          opacity: 0;
+          z-index: 0;
+          -webkit-transition: opacity 0.4s ease-in-out;
+          transition: opacity 0.4s ease-in-out;
+        }
+        .htmlmenu-menu.htmlmenu-menu-style-2>ul>li:last-child>a {
+          padding: 0 20px;
+        }
+        .htmlmenu-menu.htmlmenu-menu-style-2>ul>li:hover>a,
+        .htmlmenu-menu.htmlmenu-menu-style-2>ul>li.htmlmenu-menu-current>a {
+          color: #A6A9AA !important;
+          background-color: #45494b !important;
+        }
+        .htmlmenu-menu.htmlmenu-menu-style-2>ul>li:hover>a:after,
+        .htmlmenu-menu.htmlmenu-menu-style-2>ul>li.htmlmenu-menu-current>a:after {
+          opacity: 1;
+        }
+        .htmlmenu-menu.htmlmenu-menu-style-3>ul>li:last-child>a {
+          padding: 0 20px;
+        }
+        .htmlmenu-menu.htmlmenu-menu-style-3>ul>li:hover>a,
+        .htmlmenu-menu.htmlmenu-menu-style-3>ul>li.htmlmenu-menu-current>a {
+          color: #3A3D3F !important;
+          background-color: #F2980F !important;
+        }
+        .htmlmenu-menu.htmlmenu-menu-style-3>ul>li:hover>a>label,
+        .htmlmenu-menu.htmlmenu-menu-style-3>ul>li.htmlmenu-menu-current>a>label {
+          border-color: #3A3D3F;
+        }
+        .htmlmenu-menu.htmlmenu-submenu-scale li>ul {
+          -webkit-transform: scale(0.5);
+          -ms-transform: scale(0.5);
+          transform: scale(0.5);
+          -webkit-transform-origin: 0 0;
+          -ms-transform-origin: 0 0;
+          transform-origin: 0 0;
+        }
+        .htmlmenu-menu.htmlmenu-submenu-scale li.htmlmenu-submenu-right>ul,
+        .htmlmenu-menu.htmlmenu-submenu-scale li.htmlmenu-submenu-right>ul ul {
+          -webkit-transform-origin: 100% 0;
+          -ms-transform-origin: 100% 0;
+          transform-origin: 100% 0;
+        }
+        .htmlmenu-menu.htmlmenu-submenu-scale li:hover>ul {
+          -webkit-transform: scale(1);
+          -ms-transform: scale(1);
+          transform: scale(1);
+        }
+        .htmlmenu-menu.htmlmenu-submenu-swing-out li {
+          -webkit-perspective: 1000px;
+          -moz-perspective: 1000px;
+          -ms-perspective: 1000px;
+          perspective: 1000px;
+        }
+        .htmlmenu-menu.htmlmenu-submenu-swing-out li>ul {
+          -webkit-transform: rotateX(-45deg);
+          -ms-transform: rotateX(-45deg);
+          transform: rotateX(-45deg);
+          -webkit-transform-origin: 0 0;
+          -ms-transform-origin: 0 0;
+          transform-origin: 0 0;
+        }
+        .htmlmenu-menu.htmlmenu-submenu-swing-out li>ul ul {
+          -webkit-transform: rotateY(45deg);
+          -ms-transform: rotateY(45deg);
+          transform: rotateY(45deg);
+          -webkit-transform-origin: 0 0;
+          -ms-transform-origin: 0 0;
+          transform-origin: 0 0;
+        }
+        .htmlmenu-menu.htmlmenu-submenu-swing-out li.htmlmenu-submenu-right>ul {
+          -webkit-transform-origin: 100% 0;
+          -ms-transform-origin: 100% 0;
+          transform-origin: 100% 0;
+        }
+        .htmlmenu-menu.htmlmenu-submenu-swing-out li.htmlmenu-submenu-right>ul ul {
+          -webkit-transform: rotateY(-45deg);
+          -ms-transform: rotateY(-45deg);
+          transform: rotateY(-45deg);
+          -webkit-transform-origin: 100% 0;
+          -ms-transform-origin: 100% 0;
+          transform-origin: 100% 0;
+        }
+        .htmlmenu-menu.htmlmenu-submenu-swing-out li:hover>ul {
+          -webkit-transform: rotate(0deg) !important;
+          -ms-transform: rotate(0deg) !important;
+          transform: rotate(0deg) !important;
+        }
+        .htmlmenu-menu.htmlmenu-submenu-slide-up li>ul {
+          -webkit-transform: translateY(15px);
+          -ms-transform: translateY(15px);
+          transform: translateY(15px);
+        }
+        .htmlmenu-menu.htmlmenu-submenu-slide-up li:hover>ul {
+          -webkit-transform: translateY(0);
+          -ms-transform: translateY(0);
+          transform: translateY(0);
+        }
+        .htmlmenu-menu.htmlmenu-submenu-slide-down li>ul {
+          -webkit-transform: translateY(-15px);
+          -ms-transform: translateY(-15px);
+          transform: translateY(-15px);
+        }
+        .htmlmenu-menu.htmlmenu-submenu-slide-down li:hover>ul {
+          -webkit-transform: translateY(0);
+          -ms-transform: translateY(0);
+          transform: translateY(0);
+        }
+      }
+    </style>
+	<link rel="stylesheet" href="style2.css">
+	
+  </head>
+     
+  <body>
+    <div class="htmlmenu-wrapper">
+      <div class="htmlmenu-header">
+        <div class="htmlmenu-container">
+          <div class="htmlmenu-logo">
+            <a href="#">
+            RESUME & LETTER HUB
+            </a>
+          </div>
+          <input type="checkbox" id="htmlmenu-toggle" class="htmlmenu-toggle">
+          <label for="htmlmenu-toggle"><span></span><span></span><span></span></label>
+          <nav class="htmlmenu-menu htmlmenu-menu-style-2 htmlmenu-submenu-scale" role="navigation">
+            <ul>
+              <li class="htmlmenu-menu-current">
+                <a href="#">Home</a>
+              </li>
+              <li>
+                <input id="htmlmenu-1539847293314" type="checkbox">
+                <a href="#">Services
+                  <label for="htmlmenu-1539847293314"></label>
+                </a>
+                <ul>
+                  <li>
+                    <a href="#">Resume</a>
+                  </li>
+                  <li>
+                    <a href="#">Curriculum Vitae</a>
+                  </li>
+                  <li>
+                    <input id="htmlmenu-1755768535274" type="checkbox">
+                    <a href="#">Letter
+                      <label for="htmlmenu-1755768535274"></label>
+                    </a>
+                    <ul>
+                      <li>
+                        <a href="#">Cover Letter</a>
+                      </li>
+                      <li>
+                        <a href="#">Application Letter</a>
+                      </li>
+                      <li>
+                        <a href="#">Resignation letter</a>
+                      </li>
+                      <li>
+                        <a href="#">Recommendation Letter</a>
+                      </li>
+					  <li>
+                        <a href="#">Reference Letter</a>
+                      </li>
+					  <li>
+                        <a href="#">HR and Company Letters</a>
+                      </li>
+					   <li>
+                        <a href="#">Employment Related Letters</a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">Forum</a>
+              </li>
+              <li class="htmlmenu-submenu-right">
+                <a href="#">Contact</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="htmlmenu-header-shadow"></div>
+      </div>
+      <div class="htmlmenu-header-spacer"></div>
+    </div>
+	<style>
+   .underfoot {
+      width: 100%;
+      height: 100vh;
+      background-image: url("images/background2.jpg"); 
+      background-size: cover;
+	  background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Tablet */
+    @media (max-width: 768px) {
+      .hero {
+        background-image: url("tablet-bg.jpg");
+      }
+    }
+
+    /* Phone */
+    @media (max-width: 480px) {
+      .hero {
+        background-image: url("phone-bg.jpg");
+      }
+    }
+	</style>
+
+<div class="underfoot" div style="height: 500px;"></div>
+
+<!- BODY NA ITO ->
+
+
+  <style>
+    :root{
+      --bg:#0f1115;           /* dark charcoal */
+      --surface:#1b1f27;      /* card surface */
+      --muted:#9aa4b2;        /* secondary text */
+      --text:#e8edf3;         /* primary text */
+      --brand:#ffb703;        /* accent (matches your menu highlight) */
+      --brand-2:#2cb67d;      /* secondary accent */
+      --max:1200px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,Segoe UI,Roboto,Inter,Arial,sans-serif}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:var(--max);margin:auto;padding:0 1rem}
+
+    /* Header */
+    header{position:sticky;top:0;z-index:50;background:#12151cdd;backdrop-filter:saturate(140%) blur(6px);border-bottom:1px solid #232838}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{font-weight:800;letter-spacing:.4px}
+    .brand b{color:var(--brand)}
+    .menu{display:flex;gap:1rem;align-items:center}
+    .menu > li{list-style:none;position:relative}
+    .menu a{display:inline-block;padding:.5rem .75rem;border-radius:.5rem}
+    .menu a.active,.menu a:hover{background:#232838}
+    /* Dropdown */
+    .dropdown > a:after{content:"▾";margin-left:.35rem;font-size:.85em;color:var(--muted)}
+    .dropdown .panel{position:absolute;top:100%;left:0;background:#232838;border:1px solid #2e3446;border-radius:.75rem;min-width:220px;padding:.4rem;display:none}
+    .dropdown:hover .panel{display:block}
+    .panel a{display:flex;justify-content:space-between;align-items:center}
+    .chip{font-size:.75rem;color:#0b0e14;background:var(--brand);padding:.15rem .4rem;border-radius:.35rem;margin-left:.5rem}
+
+    /* Mobile */
+    .hamburger{display:none;background:#232838;border:1px solid #2e3446;border-radius:.6rem;padding:.4rem .55rem}
+    @media (max-width:900px){
+      .menu{display:none;position:absolute;top:64px;left:0;right:0;background:#12151c;flex-direction:column;padding:1rem;border-bottom:1px solid #232838}
+      .menu.open{display:flex}
+      .dropdown .panel{position:static;display:block;background:#1b1f27;border:none;padding:0}
+      .hamburger{display:inline-flex}
+    }
+
+    /* Hero */
+    .hero{position:relative;isolation:isolate}
+    .hero img{width:100%;height:360px;object-fit:cover;filter:grayscale(10%) contrast(105%)}
+    .hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#00000070,transparent 40%,#00000090)}
+    .hero .inner{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:1rem}
+    .hero h1{font-size:clamp(1.6rem,3.5vw,2.6rem);margin:.25rem 0}
+    .hero p{color:var(--muted);max-width:800px;margin:.5rem auto}
+    .cta{display:inline-flex;gap:.75rem;margin-top:1rem}
+    .btn{padding:.75rem 1rem;border-radius:.8rem;border:1px solid #2d3344;background:#1b1f27}
+    .btn.primary{background:var(--brand);color:#0b0e14;border-color:transparent;font-weight:700}
+
+    /* Sections */
+    section{padding:64px 0;border-top:1px solid #171a22}
+    .section-title{font-size:1.4rem;margin:0 0 .75rem}
+    .muted{color:var(--muted)
+	}
+
+
+    /* Services */
+    .grid{display:grid;gap:1rem}
+    .grid-3{grid-template-columns:repeat(3,1fr)}
+    @media (max-width:900px){.grid-3{grid-template-columns:1fr}}
+    .card{background:var(--surface);border:1px solid #2d3344;border-radius:1rem;padding:1rem}
+    .card h3{margin:.25rem 0}
+    .card ul{padding-left:1.1rem;margin:.5rem 0}
+
+    /* Process */
+    .steps{counter-reset:step;}
+    .steps li{list-style:none;position:relative;padding-left:3rem;margin:1rem 0}
+    .steps li:before{counter-increment:step;content:counter(step);position:absolute;left:0;top:0;width:2rem;height:2rem;background:#F2980F;color:#071017;border-radius:.6rem;display:grid;place-items:center;font-weight:800}
+
+    /* Testimonials */
+    .quote{font-style:italic}
+    .avatar{width:42px;height:42px;border-radius:50%;background:#333;margin-right:.6rem}
+    .testimonial{display:flex;align-items:center;margin-top:.75rem}
+
+
+    /* FAQ */
+    details{background:#151922;border:1px solid #242a3a;padding:1rem;border-radius:.8rem}
+    details+details{margin-top:.75rem}
+
+    /* Contact */
+    form{display:grid;gap:.75rem}
+    input,textarea{width:100%;padding:.75rem;border-radius:.6rem;border:1px solid #2d3344;background:#0f131b;color:var(--text)}
+    label{font-size:.9rem;color:var(--muted)}
+	
+  </style>
+ 
+</head>
+<body>
+
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <div class="inner container">
+      <div>
+	  
+        <h1>ATS‑Friendly Resumes, CVs & Letters that Get Noticed</h1>
+        <p>Tailored for local and international opportunities. Clear, concise, and optimized to pass Applicant Tracking Systems and impress hiring managers.</p>
+        <div class="cta">
+        </div>
+      </div>
+    </div>
+	<br><br><br><br>
+  </section>
+
+  <!-- Services Overview -->
+  <section id="services">
+    <div class="container">
+      <h2 class="section-title">Services</h2>
+      <p class="muted">Choose a service or bundle. Every document is tailored to your goals and industry.</p>
+      <div class="grid grid-3" style="margin-top:1rem">
+        <article id="resume" class="card">
+          <h3>Resume Writing</h3>
+          <p>Modern, keyword‑optimized 1–2 page resume for quick screening.</p>
+          <ul>
+            <li>ATS keyword mapping</li>
+            <li>Achievement‑driven bullet points</li>
+            <li>Editable DOCX + PDF</li>
+          </ul>
+        
+        </article>
+        <article id="cv" class="card">
+          <h3>Curriculum Vitae (CV)</h3>
+          <p>Comprehensive CV for academic, healthcare, or international roles.</p>
+          <ul>
+            <li>Full career history</li>
+            <li>Publications & trainings</li>
+            <li>Clean, structured layout</li>
+          </ul>
+          
+        </article>
+        <article id="letter" class="card">
+          <h3>Letters</h3>
+          <p>Impactful letters tailored to role and company.</p>
+          <ul>
+            <li>Cover & Application Letters</li>
+            <li>Follow‑up & Thank‑You Letters</li>
+            <li>Editable templates</li>
+          </ul>
+        
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section id="process">
+    <div class="container">
+      <h2 class="section-title">How It Works</h2>
+      <ol class="steps">
+        <li><strong>Brief & Goals.</strong> Share your target role, job links, and experience.</li>
+        <li><strong>Draft Creation.</strong> We craft your ATS‑aligned document with compelling bullets.</li>
+        <li><strong>Revisions.</strong> Up to 2 refinement rounds based on your feedback.</li>
+        <li><strong>Delivery.</strong> Final DOCX + PDF + tips for usage.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials">
+    <div class="container">
+      <h2 class="section-title">What Clients Say</h2>
+      <div class="grid grid-3" style="margin-top:.5rem">
+        <div class="card">
+          <p class="quote">“Got interviews in two weeks! The resume looked clean and passed the ATS.”</p>
+          <div class="testimonial"><img class="avatar" src="images/profile.jpg"></span> <div><strong>Maria L.</strong><br><span class="muted">Admin Assistant</span></div></div>
+        </div>
+        <div class="card">
+          <p class="quote">“They translated my experience into strong bullet points. Highly recommended.”</p>
+          <div class="testimonial"><img class="avatar" src="images/profile2.jpg"></span> <div><strong>J. Cruz</strong><br><span class="muted">Nurse</span></div></div>
+        </div>
+        <div class="card">
+          <p class="quote">“Professional CV and cover letter bundle—helped me land an interview abroad.”</p>
+          <div class="testimonial"><img class="avatar" src="images/profile3.jpg"></span> <div><strong>R. Santos</strong><br><span class="muted">Engineer</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ (you labeled this as Forum in the menu) -->
+  <section id="faq">
+    <div class="container">
+      <h2 class="section-title">FAQ</h2>
+      <details>
+        <summary>Do you guarantee a job?</summary>
+        <p>No. We never promise guaranteed results. We deliver high‑quality, ATS‑friendly documents to improve your chances.</p>
+      </details>
+      <details>
+        <summary>How fast is the turnaround?</summary>
+        <p>Turnaround is generally completed within one business day following submission of your brief.</p>
+      </details>
+      <details>
+        <summary>What formats do I get?</summary>
+        <p>Includes a ready-to-send PDF, with an editable Canva link available for select documents.</p>
+      </details>
+    </div>
+  </section>
+
+
+	<br><br><br><br><br><br>
+
+
+ <style>
+	  
+	      footer {
+      background: rgba(58, 61, 63, 1);
+      color: white;
+      text-align: center;
+      padding: 1px;
+      margin-top: 50px;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+    }
+	  
+</style>
+
+ <footer>
+   <marquee> <p>&copy; 2025 RESUME & LETTER HUB | All Rights Reserved</p></marquee>
+  </footer>
+
+
+  </body>
+
+</html>
